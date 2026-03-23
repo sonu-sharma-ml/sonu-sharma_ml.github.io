@@ -3,7 +3,7 @@
 Welcome to the source code for my personal portfolio! As a Data Science & Machine Learning Enthusiast, I created this portfolio to showcase my skills, projects, and professional background.
 
 ## 🚀 Live Demo
-[Link to your live portfolio] *(Update this once deployed to GitHub Pages)*
+[View Live Portfolio](https://sonu-sharma-ml.github.io/)
 
 ## 💡 Technologies Used
 * **HTML5:** Semantic and accessible structure.
@@ -28,9 +28,9 @@ Welcome to the source code for my personal portfolio! As a Data Science & Machin
 3. Run `index.html` in your favorite browser. No build steps required!
 
 ## 📬 Contact
-- **Email:** [Your Email Address]
-- **LinkedIn:** [Your LinkedIn Profile]
-- **GitHub:** [Your GitHub Profile]
+- **Email:** sonuku725020@gmail.com
+- **LinkedIn:** [sonu-kumar-135599379](https://www.linkedin.com/in/sonu-kumar-135599379/)
+- **GitHub:** [sonu-sharma-ml](https://github.com/sonu-sharma-ml)
 
 ---
 *A minimalist, modern portfolio tailored for AI and Data professionals.*
