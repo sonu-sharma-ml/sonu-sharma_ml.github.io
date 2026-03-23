@@ -1,36 +1,39 @@
-# Sonu Sharma - Portfolio
+# Data Science & Machine Learning Portfolio - Sonu Sharma
 
-Welcome to the source code for my personal portfolio! As a Data Science & Machine Learning Enthusiast, I created this portfolio to showcase my skills, projects, and professional background.
+This portfolio is a compilation of all the Data Science and Machine Learning projects I have done for academic, self-learning, and hobby purposes. This repository also hosts the source code for my live portfolio website.
 
-## 🚀 Live Demo
-[View Live Portfolio](https://sonu-sharma-ml.github.io/)
-
-## 💡 Technologies Used
-* **HTML5:** Semantic and accessible structure.
-* **CSS3:** Modern design, dark theme, Flexbox/Grid layouts, and custom animations.
-* **JavaScript:** DOM manipulation, smooth scrolling, and scroll-reveal effects.
-
-## 🌟 Sections Included
-* **About Me:** Brief introduction to my background and passion for Data Science.
-* **Skills:** Technologies I work with (Python, Machine Learning, Deep Learning, Data Analysis).
-* **Projects:** Highlighted works including the *Crop Classification Model* and *Expense Tracker*.
-* **Contact:** Easy ways to get in touch with me.
-
-## 🛠️ Local Setup
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/sonu-sharma-ml/sonu-sharma-ml.github.io.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd sonu-sharma-ml.github.io
-   ```
-3. Run `index.html` in your favorite browser. No build steps required!
-
-## 📬 Contact
-- **Email:** sonuku725020@gmail.com
-- **LinkedIn:** [sonu-kumar-135599379](https://www.linkedin.com/in/sonu-kumar-135599379/)
-- **GitHub:** [sonu-sharma-ml](https://github.com/sonu-sharma-ml)
+- **Email:** [sonuku725020@gmail.com](mailto:sonuku725020@gmail.com)
+- **LinkedIn:** [linkedin.com/in/sonu-kumar-135599379](https://www.linkedin.com/in/sonu-kumar-135599379/)
+- **GitHub:** [github.com/sonu-sharma-ml](https://github.com/sonu-sharma-ml)
+- **Live Portfolio Website:** [sonu-sharma-ml.github.io](https://sonu-sharma-ml.github.io/)
+- **Resume:** [View Resume](https://github.com/sonu-sharma-ml/sonu-sharma_ml.github.io/blob/main/resume.pdf)
 
 ---
-*A minimalist, modern portfolio tailored for AI and Data professionals.*
+
+## 🚀 Core Competencies
+
+- **Methodologies:** Machine Learning, Deep Learning, Data Analysis, Supervised & Unsupervised Learning
+- **Languages:** Python
+- **Libraries/Tools:** Pandas, NumPy, Scikit-Learn, TensorFlow, PyTorch, SQL, HTML, CSS, JavaScript, Git
+
+---
+
+## 📂 Projects
+
+### 🧠 [DSA Problem Solving](https://github.com/sonu-sharma-ml/DSA-Problem-Solving)
+A comprehensive collection of Data Structures and Algorithms problems solved in Python from platforms like LeetCode, GeeksforGeeks, and HackerRank. Focused on optimizing time and space complexity, and improving problem-solving and coding skills.
+*Tags: `Python`, `Data Structures`, `Algorithms`*
+
+### 🌾 Crop Classification Model
+A machine learning approach to classify crops based on soil features and climatic conditions, assisting in agricultural decision-making. 
+*Tags: `Python`, `Scikit-Learn`, `Data Analysis`*
+
+### 💰 Expense Tracker
+A data-driven application that helps users track, analyze, and visualize their daily expenses to better manage their personal finances.
+*Tags: `Python`, `Pandas`, `Data Visualization`*
+
+---
+
+## 🌐 About This Repository
+The HTML/CSS/JS files in this repository build the primary visual portfolio deployed via **GitHub Pages**. 
+Check it out here: [https://sonu-sharma-ml.github.io/](https://sonu-sharma-ml.github.io/)
