@@ -18,6 +18,14 @@ This portfolio is a compilation of all the Data Science and Machine Learning pro
 
 ---
 
+## 🏆 Certifications
+
+### 🧠 Deep Learning Certificate
+Neural Networks, CNN, RNN, and advanced deep learning concepts.
+- [View Certificate](https://github.com/sonu-sharma-ml/sonu-sharma_ml.github.io/blob/main/deeplearning_certificate.pdf)
+
+---
+
 ## 📂 Projects
 
 ### 🧠 [DSA Problem Solving](https://github.com/sonu-sharma-ml/DSA-Problem-Solving)
