@@ -63,6 +63,77 @@ const revealOnScroll = () => {
 
 window.addEventListener('scroll', revealOnScroll);
 
+// Skill Bar Animation
+const skillBars = document.querySelectorAll('.skill-progress');
+
+const animateSkillBars = () => {
+    skillBars.forEach(bar => {
+        const rect = bar.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight - 100;
+        if (isVisible && !bar.classList.contains('animate')) {
+            const progress = bar.getAttribute('data-progress');
+            bar.style.setProperty('--progress', progress + '%');
+            bar.classList.add('animate');
+        }
+    });
+}
+
+window.addEventListener('scroll', animateSkillBars);
+animateSkillBars();
+
+window.addEventListener('scroll', animateSkillBars);
+animateSkillBars();
+
 // Initialize
 navSlide();
 revealOnScroll();
+createParticles();
+
+// Typing Animation
+const typedText = document.querySelector('.typing-text');
+const phrases = ['Data Science & ML Enthusiast', 'Deep Learning Developer', 'AI & ML Engineer', 'Python Developer'];
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typingSpeed = 100;
+
+function type() {
+    const currentPhrase = phrases[phraseIndex];
+    
+    if (isDeleting) {
+        typedText.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+        typingSpeed = 50;
+    } else {
+        typedText.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+        typingSpeed = 100;
+    }
+    
+    if (!isDeleting && charIndex === currentPhrase.length) {
+        isDeleting = true;
+        typingSpeed = 2000;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        typingSpeed = 500;
+    }
+    
+    setTimeout(type, typingSpeed);
+}
+
+document.addEventListener('DOMContentLoaded', type);
+
+// Floating Particles
+const createParticles = () => {
+    const hero = document.querySelector('.hero');
+    for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        hero.appendChild(particle);
+    }
+};
