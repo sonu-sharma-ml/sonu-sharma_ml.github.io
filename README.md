@@ -31,6 +31,7 @@ Neural Networks, CNN, RNN, and advanced deep learning concepts.
 ### 🧠 [DSA Problem Solving](https://github.com/sonu-sharma-ml/DSA-Problem-Solving)
 A comprehensive collection of Data Structures and Algorithms problems solved in Python from platforms like LeetCode, GeeksforGeeks, and HackerRank. Focused on optimizing time and space complexity, and improving problem-solving and coding skills.
 *Tags: `Python`, `Data Structures`, `Algorithms`*
+- **LeetCode Profile:** [sonu_kumar7275](https://leetcode.com/u/sonu_kumar7275/)
 
 ### 💉 [Diabetes Risk Predictor](https://github.com/sonu-sharma-ml/diabetes-risk-predictor)
 An enterprise-grade Clinical Decision Support System (CDSS) for diabetes risk assessment and prevention, leveraging machine learning and GenAI to provide personalized health insights.
