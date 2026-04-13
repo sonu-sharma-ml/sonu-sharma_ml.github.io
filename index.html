@@ -1,178 +1,933 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sonu Sharma - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sonu Kumar Anand — ML Engineer & Data Scientist</title>
+  <meta name="description" content="Portfolio of Sonu Kumar Anand — B.Tech ECE student, ML Engineer, Deep Learning developer, and competitive programmer from Prayagraj, India. Praxis 2.0 winner." />
+  <meta property="og:title" content="Sonu Kumar Anand — ML Engineer" />
+  <meta property="og:description" content="B.Tech ECE | ML & Deep Learning | Praxis 2.0 Winner | 150+ LeetCode" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #0c0a09;
+      --bg2: #161210;
+      --bg3: #1e1916;
+      --text: #fafaf9;
+      --text2: #a8a29e;
+      --text3: #57534e;
+      --amber: #f59e0b;
+      --amber2: #fbbf24;
+      --orange: #fb923c;
+      --red: #ef4444;
+      --green: #22c55e;
+      --border: rgba(245,158,11,0.15);
+      --border2: rgba(245,158,11,0.08);
+      --font-display: 'Syne', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-body: 'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* dot grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(245,158,11,0.12) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* noise overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 2px; }
+
+    /* nav */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1.25rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(12,10,9,0.8);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border2);
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--amber);
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--text); }
+    .nav-links { display: flex; list-style: none; gap: 0.25rem; align-items: center; }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text2);
+      text-decoration: none;
+      padding: 0.4rem 0.85rem;
+      border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover { color: var(--amber); background: rgba(245,158,11,0.07); }
+    .nav-links a.active { color: var(--amber); }
+    .nav-resume {
+      color: var(--amber) !important;
+      border: 1px solid var(--amber) !important;
+      padding: 0.4rem 1rem !important;
+    }
+    .nav-resume:hover { background: rgba(245,158,11,0.12) !important; }
+    .burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 200; }
+    .burger span { display: block; width: 24px; height: 2px; background: var(--text); transition: 0.3s; border-radius: 2px; }
+    .burger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 5% 4rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-inner { max-width: 900px; width: 100%; }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--amber);
+      background: rgba(245,158,11,0.08);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--amber);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 9vw, 7rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      animation: fadeUp 0.6s 0.1s ease both;
+      margin-bottom: 0.6rem;
+    }
+    .hero-name .highlight {
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      background-image: linear-gradient(135deg, var(--amber) 0%, var(--orange) 100%);
+    }
+    .hero-role {
+      font-family: var(--font-mono);
+      font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+      color: var(--text2);
+      margin-bottom: 1.75rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+    .hero-role .typed-text { color: var(--amber2); }
+    .hero-role .cursor {
+      display: inline-block;
+      width: 2px; height: 1.1em;
+      background: var(--amber);
+      vertical-align: middle;
+      margin-left: 2px;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .hero-bio {
+      font-size: 1.05rem;
+      color: var(--text2);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s 0.3s ease both;
+      line-height: 1.75;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.75rem;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+    .stat {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1.25rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text3);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      animation: fadeUp 0.6s 0.5s ease both;
+    }
+    .btn {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-decoration: none;
+      padding: 0.75rem 1.6rem;
+      border-radius: 6px;
+      transition: 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary { background: var(--amber); color: var(--bg); font-weight: 500; }
+    .btn-primary:hover { background: var(--amber2); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); }
+    .hero-glow {
+      position: absolute;
+      top: 50%; right: 5%;
+      transform: translateY(-50%);
+      width: min(500px, 50vw);
+      height: min(500px, 50vw);
+      background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* sections */
+    section { position: relative; z-index: 1; padding: 6rem 5%; }
+    .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 3.5rem; }
+    .section-number { font-family: var(--font-mono); font-size: 0.7rem; color: var(--amber); opacity: 0.6; }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+
+    /* about */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .about-text p { color: var(--text2); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; }
+    .about-text p strong { color: var(--amber); font-weight: 500; }
+    .about-photo {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      aspect-ratio: 4/5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--text3);
+      overflow: hidden;
+    }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+    .about-photo i { font-size: 3rem; color: var(--border); }
+    .about-photo p { font-family: var(--font-mono); font-size: 0.72rem; text-align: center; }
+    .about-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.75rem; }
+    .info-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.65rem 1rem;
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text2);
+    }
+    .info-chip i { color: var(--amber); font-size: 0.75rem; }
+
+    /* skills */
+    .skills-container { display: flex; flex-direction: column; gap: 2rem; }
+    .skill-category-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.85rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tag {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      border: 1px solid var(--border2);
+      color: var(--text2);
+      background: var(--bg2);
+      transition: 0.2s;
+      cursor: default;
+    }
+    .skill-tag:hover { border-color: var(--amber); color: var(--amber); background: rgba(245,158,11,0.05); }
+    .skill-tag.featured { border-color: var(--border); color: var(--text); background: var(--bg3); }
+
+    /* projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: border-color 0.25s, transform 0.25s;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--amber), var(--orange));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover { border-color: var(--border); transform: translateY(-4px); }
+    .project-card:hover::before { transform: scaleX(1); }
+    .project-card.featured { border-color: var(--border); }
+    .project-card.featured::before { transform: scaleX(1); }
+    .project-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .project-icon { font-size: 1.5rem; }
+    .project-links { display: flex; gap: 0.5rem; }
+    .project-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px; height: 32px;
+      border: 1px solid var(--border2);
+      border-radius: 6px;
+      color: var(--text3);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: 0.2s;
+    }
+    .project-link:hover { color: var(--amber); border-color: var(--amber); }
+    .project-name { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
+    .project-desc { font-size: 0.9rem; color: var(--text2); line-height: 1.7; flex: 1; }
+    .project-metric {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--green);
+      background: rgba(34,197,94,0.07);
+      border: 1px solid rgba(34,197,94,0.2);
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
+    .project-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text3);
+      background: var(--bg3);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid var(--border2);
+    }
+    .winner-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--amber);
+      background: rgba(245,158,11,0.08);
+      border: 1px solid rgba(245,158,11,0.25);
+      padding: 0.2rem 0.65rem;
+      border-radius: 4px;
+    }
+
+    /* achievements */
+    .achievements-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+    .ach-card { background: var(--bg2); border: 1px solid var(--border2); border-radius: 10px; padding: 1.5rem; transition: border-color 0.2s; }
+    .ach-card:hover { border-color: var(--border); }
+    .ach-icon { font-size: 1.75rem; margin-bottom: 1rem; }
+    .ach-title { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+    .ach-desc { font-size: 0.85rem; color: var(--text2); line-height: 1.6; }
+
+    /* certifications */
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+    .cert-card {
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: border-color 0.2s;
+    }
+    .cert-card:hover { border-color: var(--border); }
+    .cert-issuer { font-family: var(--font-mono); font-size: 0.68rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.08em; }
+    .cert-name { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--text); }
+    .cert-desc { font-size: 0.85rem; color: var(--text2); line-height: 1.6; }
+    .cert-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--amber);
+      text-decoration: none;
+      margin-top: auto;
+      transition: opacity 0.2s;
+    }
+    .cert-link:hover { opacity: 0.7; }
+
+    /* contact */
+    .contact-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+    .contact-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .contact-headline span {
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      background-image: linear-gradient(135deg, var(--amber), var(--orange));
+    }
+    .contact-sub { font-size: 1rem; color: var(--text2); margin-bottom: 2.5rem; line-height: 1.7; }
+    .contact-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+    .social-row { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; }
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text2);
+      text-decoration: none;
+      padding: 0.6rem 1.1rem;
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+    .social-link:hover { color: var(--amber); border-color: var(--amber); }
+    .social-link i { font-size: 0.9rem; }
+
+    /* footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid var(--border2);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text3);
+    }
+    footer span { color: var(--amber); }
+
+    /* reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { display: none; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(12,10,9,0.97);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        z-index: 150;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 1.1rem; }
+      .burger { display: flex; }
+      .hero-stats { gap: 0.75rem; }
+      .stat { padding: 0.6rem 1rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .about-info-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">SS.</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="resume.pdf" target="_blank" class="resume-nav">Resume</a></li>
-        </ul>
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-    </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h2 class="greeting">Hi, I'm</h2>
-            <h1 class="name">Sonu Sharma</h1>
-            <h3 class="role">Data Science & Machine Learning Enthusiast</h3>
-            <span class="typing-text"></span>
-            <p class="summary">I leverage data to build intelligent models and extract actionable insights. Passionate about AI, deep learning, and creating impactful solutions.</p>
-            <div class="cta-buttons">
-                <a href="#projects" class="btn primary-btn">View My Work</a>
-                <a href="resume.pdf" target="_blank" class="btn secondary-btn"><i class="fas fa-file-pdf" style="margin-right: 8px;"></i>Resume</a>
-                <a href="#contact" class="btn secondary-btn">Get in Touch</a>
-            </div>
-        </div>
-    </header>
-
-    <div class="scroll-indicator">
-        <i class="fas fa-chevron-down"></i>
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="logo">SK<span>.</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#achievements">wins</a></li>
+      <li><a href="#certifications">certs</a></li>
+      <li><a href="#contact">contact</a></li>
+      <li><a href="sonu_resume.pdf" target="_blank" class="nav-resume">résumé ↗</a></li>
+    </ul>
+    <div class="burger" id="burger">
+      <span></span><span></span><span></span>
     </div>
+  </nav>
 
-    <section id="about" class="section">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Welcome to my portfolio! I am a dedicated Data Science and Machine Learning Enthusiast. My journey involves diving deep into data, developing cutting-edge machine learning models, and bringing analytical rigor to solve real-world problems.</p>
-                <p>I constantly strive to learn new technologies and apply them thoughtfully. From exploratory data analysis to training complex neural networks, I aim to create models that are not just accurate, but robust and scalable.</p>
-            </div>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <div class="hero-tag">Available for internships & collaborations</div>
+      <h1 class="hero-name">
+        Sonu<br><span class="highlight">Kumar Anand</span>
+      </h1>
+      <p class="hero-role">
+        &gt; <span class="typed-text" id="typed"></span><span class="cursor"></span>
+      </p>
+      <p class="hero-bio">
+        Second-year B.Tech ECE student at University of Allahabad, building intelligent systems from the ground up. I turn raw data into models that actually matter — healthcare, agriculture, finance.
+      </p>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">8.5</div><div class="stat-label">CGPA / 10</div></div>
+        <div class="stat"><div class="stat-num">150+</div><div class="stat-label">LeetCode Solved</div></div>
+        <div class="stat"><div class="stat-num">96%</div><div class="stat-label">Best Model Precision</div></div>
+        <div class="stat"><div class="stat-num">7+</div><div class="stat-label">ML Projects</div></div>
+      </div>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="sonu_resume.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-file-pdf"></i> &nbsp;Download Résumé</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-header reveal">
+      <span class="section-number">01</span>
+      <h2 class="section-title">About Me</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>I'm a <strong>second-year Electronics & Communication Engineering student</strong> at the University of Allahabad, Prayagraj — with a passion that lives firmly in the world of Machine Learning and AI.</p>
+        <p>My work spans the full ML pipeline: from exploratory data analysis and feature engineering to training production-ready models with Scikit-Learn, TensorFlow, and PyTorch. I care about models that are accurate, <strong>robust, and interpretable</strong> — not just impressive on a leaderboard.</p>
+        <p>Beyond ML, I'm a competitive programmer who's solved <strong>150+ problems on LeetCode</strong> and participated in Google's The Big Code Challenge 2026. I believe strong fundamentals make better engineers.</p>
+        <div class="about-info-grid">
+          <div class="info-chip"><i class="fas fa-map-marker-alt"></i> Prayagraj, UP, India</div>
+          <div class="info-chip"><i class="fas fa-graduation-cap"></i> B.Tech ECE · 2024–2028</div>
+          <div class="info-chip"><i class="fas fa-star"></i> CGPA: 8.5 / 10</div>
+          <div class="info-chip"><i class="fas fa-trophy"></i> Praxis 2.0 Winner</div>
+          <div class="info-chip"><i class="fas fa-envelope"></i> sonuku725020@gmail.com</div>
+          <div class="info-chip"><i class="fab fa-github"></i> github.com/sonu-sharma-ml</div>
         </div>
-    </section>
+      </div>
+      <div class="about-photo">
+        <!-- To add your photo, replace the lines below with: <img src="your-photo.jpg" alt="Sonu Kumar Anand" /> -->
+        <i class="fas fa-user-circle"></i>
+        <p>Add your photo here<br><span style="font-size:0.65rem;color:var(--text3);">Replace with an img tag</span></p>
+      </div>
+    </div>
+  </section>
 
-    <section id="skills" class="section">
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <i class="fab fa-python skill-icon"></i>
-                <h3>Python</h3>
-                <p>Pandas, NumPy, Scikit-Learn</p>
-                <div class="skill-bar"><div class="skill-progress" data-progress="95"></div></div>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-brain skill-icon"></i>
-                <h3>Machine Learning</h3>
-                <p>Supervised & Unsupervised Learning</p>
-                <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-network-wired skill-icon"></i>
-                <h3>Deep Learning</h3>
-                <p>Neural Networks, TensorFlow, PyTorch</p>
-                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-chart-bar skill-icon"></i>
-                <h3>Data Analysis</h3>
-                <p>Data Visualization, EDA, SQL</p>
-                <div class="skill-bar"><div class="skill-progress" data-progress="88"></div></div>
-            </div>
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-header reveal">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-container">
+      <div class="reveal">
+        <div class="skill-category-label">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag featured">Python</span>
+          <span class="skill-tag featured">C / C++</span>
+          <span class="skill-tag featured">SQL</span>
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">JavaScript</span>
         </div>
-    </section>
-
-    <section id="certifications" class="section">
-        <h2 class="section-title">Certifications</h2>
-        <div class="certifications-grid">
-            <div class="certification-card">
-                <div class="certification-content">
-                    <i class="fas fa-certificate certification-icon"></i>
-                    <h3>Deep Learning Certificate</h3>
-                    <p>Neural Networks, CNN, RNN, and advanced deep learning concepts.</p>
-                    <a href="deeplearning_certificate.pdf" target="_blank" class="btn primary-btn">View Certificate</a>
-                </div>
-            </div>
+      </div>
+      <div class="reveal">
+        <div class="skill-category-label">ML / Deep Learning</div>
+        <div class="skill-tags">
+          <span class="skill-tag featured">Scikit-Learn</span>
+          <span class="skill-tag featured">TensorFlow / Keras</span>
+          <span class="skill-tag featured">XGBoost</span>
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">Random Forest</span>
+          <span class="skill-tag">Neural Networks</span>
+          <span class="skill-tag">LSTM / RNN</span>
+          <span class="skill-tag">CNN</span>
         </div>
-    </section>
-
-    <section id="projects" class="section">
-        <h2 class="section-title">Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-content">
-                    <h3>Diabetes Risk Predictor</h3>
-                    <p>An enterprise-grade Clinical Decision Support System (CDSS) for diabetes risk assessment and prevention, leveraging machine learning and GenAI to provide personalized health insights.</p>
-                    <div style="margin-top: 15px; margin-bottom: 15px;">
-                        <a href="https://github.com/sonu-sharma-ml/diabetes-risk-predictor" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 0.95rem; font-weight: 500;"><i class="fab fa-github" style="margin-right: 8px;"></i>View Repository</a>
-                    </div>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Machine Learning</span>
-                        <span>GenAI</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-content">
-                    <h3>Crop Classification Model</h3>
-                    <p>A machine learning approach to classify crops based on soil features and climatic conditions, assisting in agricultural decision-making.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Scikit-Learn</span>
-                        <span>Data Analysis</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-content">
-                    <h3>Expense Tracker</h3>
-                    <p>A data-driven application that helps users track, analyze, and visualize their daily expenses to better manage their personal finances.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Pandas</span>
-                        <span>Visualization</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-content">
-                    <h3>DSA Problem Solving</h3>
-                    <p>A comprehensive collection of Data Structures and Algorithms solutions in Python from LeetCode, GeeksforGeeks, and HackerRank. Focused on optimizing time and space complexity.</p>
-                    <div style="margin-top: 15px; margin-bottom: 15px;">
-                        <a href="https://github.com/sonu-sharma-ml/DSA-Problem-Solving" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 0.95rem; font-weight: 500;"><i class="fab fa-github" style="margin-right: 8px;"></i>View Repository</a>
-                    </div>
-                    <div style="margin-top: 10px; margin-bottom: 15px;">
-                        <a href="https://leetcode.com/u/sonu_kumar7275/" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 0.95rem; font-weight: 500;"><i class="fas fa-code" style="margin-right: 8px;"></i>LeetCode Profile</a>
-                    </div>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Algorithms</span>
-                        <span>Data Structures</span>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="reveal">
+        <div class="skill-category-label">Data Science & NLP</div>
+        <div class="skill-tags">
+          <span class="skill-tag featured">Pandas</span>
+          <span class="skill-tag featured">NumPy</span>
+          <span class="skill-tag featured">Matplotlib / Seaborn</span>
+          <span class="skill-tag">NLTK</span>
+          <span class="skill-tag">TF-IDF</span>
+          <span class="skill-tag">EDA</span>
+          <span class="skill-tag">Feature Engineering</span>
         </div>
-    </section>
-
-    <section id="contact" class="section">
-        <h2 class="section-title">Get in Touch</h2>
-        <div class="contact-content">
-            <p>I am currently open to new opportunities in Data Science and Machine Learning. Whether you have a question, a project idea, or just want to say hi, feel free to drop a message!</p>
-            <a href="mailto:sonuku725020@gmail.com" class="btn primary-btn">Say Hello</a>
-            <div class="social-links">
-                <a href="https://github.com/sonu-sharma-ml" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/sonu-kumar-135599379/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            </div>
+      </div>
+      <div class="reveal">
+        <div class="skill-category-label">Tools & Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag featured">Git / GitHub</span>
+          <span class="skill-tag featured">Streamlit</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Jupyter</span>
+          <span class="skill-tag">Google Colab</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">MySQL</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2026 Sonu Sharma. Built with modern web technologies.</p>
-    </footer>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-header reveal">
+      <span class="section-number">03</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
 
-    <script src="script.js"></script>
+      <div class="project-card featured reveal">
+        <div class="project-top">
+          <span class="project-icon">🫀</span>
+          <div class="project-links">
+            <a href="https://github.com/sonu-sharma-ml/Heart_Disease_Prediction-123" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="project-name">Heart Disease Prediction</div>
+        <div class="project-desc">ML pipeline processing 10,000+ patient records for heart disease risk assessment using Random Forest. Achieved a 12% improvement over baseline through feature engineering and hyperparameter tuning.</div>
+        <div><span class="project-metric"><i class="fas fa-chart-line"></i> 94% accuracy</span></div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Random Forest</span>
+          <span class="project-tag">Scikit-Learn</span>
+          <span class="project-tag">Healthcare ML</span>
+        </div>
+      </div>
+
+      <div class="project-card featured reveal">
+        <div class="project-top">
+          <span class="project-icon">💉</span>
+          <div class="project-links">
+            <a href="https://github.com/sonu-sharma-ml/diabetes-risk-predictor" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="project-name">Diabetes Risk Predictor</div>
+        <div class="project-desc">Enterprise-grade Clinical Decision Support System (CDSS) for diabetes prevention with uncertainty quantification and personalized intervention recommendations. Dual-interface, production-ready architecture.</div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <span class="winner-badge"><i class="fas fa-trophy"></i> Praxis 2.0 Winner</span>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Machine Learning</span>
+          <span class="project-tag">GenAI</span>
+          <span class="project-tag">Streamlit</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-top">
+          <span class="project-icon">📧</span>
+          <div class="project-links"></div>
+        </div>
+        <div class="project-name">Spam Email Detector</div>
+        <div class="project-desc">NLP pipeline for spam detection with full text-processing: tokenization, stemming, and TF-IDF vectorization. Deployed as a real-time classifier.</div>
+        <div><span class="project-metric"><i class="fas fa-check-circle"></i> 96% precision</span></div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">NLTK</span>
+          <span class="project-tag">TF-IDF</span>
+          <span class="project-tag">NLP</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-top">
+          <span class="project-icon">🌾</span>
+          <div class="project-links"></div>
+        </div>
+        <div class="project-name">Crop Classification Model</div>
+        <div class="project-desc">ML classifier using soil features and climatic conditions to recommend optimal crop selection. Assists agricultural decision-making with interpretable outputs.</div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Scikit-Learn</span>
+          <span class="project-tag">Data Analysis</span>
+          <span class="project-tag">Agriculture</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-top">
+          <span class="project-icon">🔤</span>
+          <div class="project-links"></div>
+        </div>
+        <div class="project-name">Next Word Predictor (LSTM)</div>
+        <div class="project-desc">LSTM-based language model trained from scratch on an 8,932-word vocabulary. Full pipeline from tokenization to inference — a deep dive into sequential NLP architecture.</div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">TensorFlow</span>
+          <span class="project-tag">LSTM</span>
+          <span class="project-tag">NLP</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-top">
+          <span class="project-icon">💰</span>
+          <div class="project-links"></div>
+        </div>
+        <div class="project-name">Expense Tracker</div>
+        <div class="project-desc">Data-driven app for tracking, analysing, and visualising personal finances. Built with Pandas for data wrangling and Matplotlib/Seaborn for insightful dashboards.</div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Pandas</span>
+          <span class="project-tag">Matplotlib</span>
+          <span class="project-tag">Visualization</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-top">
+          <span class="project-icon">⚡</span>
+          <div class="project-links">
+            <a href="https://github.com/sonu-sharma-ml/DSA-Problem-Solving" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+            <a href="https://leetcode.com/u/sonu_kumar7275/" target="_blank" class="project-link"><i class="fas fa-code"></i></a>
+          </div>
+        </div>
+        <div class="project-name">DSA Problem Solving</div>
+        <div class="project-desc">Curated collection of 150+ solved problems from LeetCode, GeeksforGeeks, and HackerRank — focused on optimal time and space complexity across arrays, trees, graphs, and DP.</div>
+        <div><span class="project-metric"><i class="fas fa-fire"></i> 150+ problems solved</span></div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Algorithms</span>
+          <span class="project-tag">Data Structures</span>
+          <span class="project-tag">LeetCode</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <div class="section-header reveal">
+      <span class="section-number">04</span>
+      <h2 class="section-title">Achievements</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="achievements-grid">
+      <div class="ach-card reveal">
+        <div class="ach-icon">🏆</div>
+        <div class="ach-title">Praxis 2.0 Winner</div>
+        <div class="ach-desc">First place at Praxis 2.0 hackathon for the Diabetes CDSS project — recognized for production-ready architecture and clinical relevance.</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">🌐</div>
+        <div class="ach-title">Google Big Code Challenge 2026</div>
+        <div class="ach-desc">Registered participant in Google's prestigious coding competition, competing against engineers globally in algorithmic problem-solving.</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">⚔️</div>
+        <div class="ach-title">150+ LeetCode Problems</div>
+        <div class="ach-desc">Consistent competitive programmer with 150+ problems solved covering arrays, linked lists, trees, graphs, and dynamic programming.</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">🎤</div>
+        <div class="ach-title">ML Workshop Organizer</div>
+        <div class="ach-desc">Organised and led an ML Basics Workshop for peers at University of Allahabad — breaking down real ML pipelines for beginners.</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">🤝</div>
+        <div class="ach-title">ML & Coding Club Member</div>
+        <div class="ach-desc">Active member of the ML & Coding Club at University of Allahabad. Open-source contributor with multiple active GitHub repositories.</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">✍️</div>
+        <div class="ach-title">Technical Blogger</div>
+        <div class="ach-desc">Writing about ML projects, implementations, and research — covering topics from LSTMs to Transformers and LangChain.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="section-header reveal">
+      <span class="section-number">05</span>
+      <h2 class="section-title">Certifications</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card reveal">
+        <div class="cert-issuer">Coursera · Andrew Ng</div>
+        <div class="cert-name">Machine Learning Specialization</div>
+        <div class="cert-desc">Supervised, unsupervised, and reinforcement learning. One of the most recognised ML certifications worldwide, taught by Andrew Ng of Stanford / DeepLearning.AI.</div>
+        <a href="#" class="cert-link"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-issuer">Deep Learning Certificate</div>
+        <div class="cert-name">Deep Learning Fundamentals</div>
+        <div class="cert-desc">Neural Networks, CNNs, RNNs, LSTMs, and advanced deep learning architectures — with hands-on implementation in TensorFlow/Keras.</div>
+        <a href="deeplearning_certificate.pdf" target="_blank" class="cert-link"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-issuer">Certification</div>
+        <div class="cert-name">Python for Data Science & ML</div>
+        <div class="cert-desc">End-to-end Python for data science — Pandas, NumPy, Matplotlib, Scikit-Learn, and building production-ready ML workflows.</div>
+        <a href="#" class="cert-link"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner reveal">
+      <h2 class="contact-headline">Let's Build<br><span>Something Together</span></h2>
+      <p class="contact-sub">
+        I'm actively looking for internships, research collaborations, and interesting ML projects. Whether you have an opportunity or just want to talk AI — my inbox is open.
+      </p>
+      <div class="contact-actions">
+        <a href="mailto:sonuku725020@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> &nbsp;Say Hello</a>
+        <a href="sonu_resume.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-file-pdf"></i> &nbsp;Download Résumé</a>
+      </div>
+      <div class="social-row">
+        <a href="https://github.com/sonu-sharma-ml" target="_blank" class="social-link"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/sonu-kumar-135599379/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://leetcode.com/u/sonu_kumar7275/" target="_blank" class="social-link"><i class="fas fa-code"></i> LeetCode</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Built by <span>Sonu Kumar Anand</span> &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; <span>sonu-sharma-ml.github.io</span></p>
+  </footer>
+
+  <script>
+    // burger menu
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // typing animation
+    const phrases = ['ML Engineer', 'Deep Learning Developer', 'Competitive Programmer', 'AI & Data Scientist'];
+    let pi = 0, ci = 0, deleting = false;
+    const el = document.getElementById('typed');
+    function type() {
+      const phrase = phrases[pi];
+      if (deleting) { el.textContent = phrase.slice(0, --ci); }
+      else { el.textContent = phrase.slice(0, ++ci); }
+      if (!deleting && ci === phrase.length) { setTimeout(() => { deleting = true; }, 2000); setTimeout(type, 50); return; }
+      if (deleting && ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(type, 400); return; }
+      setTimeout(type, deleting ? 45 : 95);
+    }
+    type();
+
+    // IntersectionObserver for scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navAs = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.id; });
+      navAs.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+      });
+    }, { passive: true });
+  </script>
 </body>
 </html>
